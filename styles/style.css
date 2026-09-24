@@ -8,6 +8,10 @@ body {
     background-color: #E1D4C9;
 }
 
+body.active {
+    overflow: hidden;
+}
+
 body.dark-theme {
     background-color: #292826;
 }
@@ -105,6 +109,14 @@ body.dark-theme .header-logo img {
     content: url("../img/logo-light.svg");
 }
 
+body.dark-theme .mobile-app-img img {
+    content: url("../img/mobile-screens-dark.png");
+}
+
+.mobile-app-img img {
+    content: url("../img/mobile-screens.png");
+}
+
 .coffee-menu-logo img {
     content: url("../img/coffee-cup.svg");
 }
@@ -152,6 +164,7 @@ body.dark-theme .google-icon {
 body.dark-theme .switch-dark span {
     background-image: url("../img/moon-light.svg");
 }
+
 
 
 .container {
@@ -316,7 +329,9 @@ body.dark-theme .switch-dark span {
 .coffee-menu-logo {}
 
 
-.main {}
+.main {
+    padding: 100px 0 0 0;
+}
 
 .hero {
     padding: 20px 0 0 0;
@@ -409,6 +424,7 @@ body.dark-theme .switch-dark span {
 .slider-container {
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 .arrow {
@@ -446,10 +462,29 @@ body.dark-theme .switch-dark span {
 
 .arrow-right {}
 
+.slider-content.active {
+    opacity: 1;
+    transform: translateX(0);
+    position: relative;
+    pointer-events: auto;
+}
+
 .slider-content {
     display: flex;
     flex-direction: column;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    position: absolute;
+    pointer-events: none;
+}
 
+.slider-content.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slider-controls span.active {
+    background-color: #665F58;
 }
 
 .slider-img {
@@ -488,6 +523,7 @@ body.dark-theme .switch-dark span {
     justify-content: center;
     gap: 8px;
     padding: 40px 0 0 0;
+    cursor: pointer;
 }
 
 .slider-controls span {
@@ -498,9 +534,6 @@ body.dark-theme .switch-dark span {
     border-radius: 2px;
 }
 
-.slider-controls span:first-child {
-    background-color: #665F58;
-}
 
 
 .slider-controls {}
@@ -812,7 +845,7 @@ body.dark-theme .switch-dark span {
     padding: 0;
 }
 
-.offer-tab-container:first-child {
+.offer-tab-container.active {
     background-color: #665F55;
     color: #E1D4C9;
 }
@@ -1128,7 +1161,7 @@ body.dark-theme .switch-dark span {
         position: fixed;
         top: 0;
         left: 0;
-        width: 100vh;
+        width: 100vw;
         height: 100vh;
         box-sizing: border-box;
         padding: 282px 0 0 0;
@@ -1147,6 +1180,8 @@ body.dark-theme .switch-dark span {
     .menu-burger {
         display: flex;
     }
+
+
 }
 
 
@@ -1285,7 +1320,13 @@ body.dark-theme .switch-dark span {
         height: 507px;
     }
 
+    .slider-img img {
+        width: 348px;
+        height: 348px;
+    }
+
 }
+
 .header-list li.active {
     top: 50%;
     font-size: 32px;
