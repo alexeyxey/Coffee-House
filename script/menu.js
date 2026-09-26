@@ -27,11 +27,6 @@ function renderCards(data) {
     return cardsHTML;
 };
 
-menuContainer.innerHTML = renderCards(data);
-
-
-
-
 const categories = document.querySelectorAll('.offer-tab-container');
 categories[0].classList.add('active');
 categories.forEach(category => {
@@ -43,11 +38,38 @@ categories.forEach(category => {
 
         const currentData = category.dataset.category;
         const filterData = data.filter(item => item.category === currentData);
-        menuContainer.innerHTML = renderCards(filterData);
         console.log(filterData)
         console.log(currentData)
+        menuContainer.innerHTML = renderCards(filterData);
     })
 })
 
+menuContainer.innerHTML = renderCards(data.filter(item => item.category === 'coffee'));
 
+
+const menuItems = document.querySelectorAll('.menu-items');
+const modal = document.querySelector(".dialog")
+const closeBtn = document.querySelector(".close-btn")
+
+menuItems.forEach(item => {
+    item.addEventListener("click", (event) => {
+        modal.showModal();
+        document.body.classList.add("active");
+        event.stopPropagation()
+    })
+})
+
+closeBtn.addEventListener("click", () => {
+    modal.close();
+    document.body.classList.remove("active");
+
+})
+
+modal.addEventListener('click', (event) => {
+    const isClickInsideMenu = modal.contains(event.target);
+    if (event.target === modal) {
+        document.body.classList.remove("active");
+        modal.close();
+    }
+})
 

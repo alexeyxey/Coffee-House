@@ -77,15 +77,15 @@
                 </h1>
                 <div class="offer-tabs">
                     <div class="offer-tabs-container">
-                        <div data-category="coffee" class="offer-tab-container">
-                            <div class="offer-tab-emoji">
+                        <div data-category="coffee" class="offer-tab-container tab">
+                            <div class="offer-tab-emoji ">
                                 ☕
                             </div>
                             <div class="offer-tab-text">
                                 Coffee
                             </div>
                         </div>
-                        <div data-category="tea" class="offer-tab-container">
+                        <div data-category="tea" class="offer-tab-container tab">
                             <div class="offer-tab-emoji">
                                 🫖
                             </div>
@@ -93,7 +93,7 @@
                                 Tea
                             </div>
                         </div>
-                        <div data-category="dessert" class="offer-tab-container">
+                        <div data-category="dessert" class="offer-tab-container tab">
                             <div class="offer-tab-emoji">
                                 🍰
                             </div>
@@ -151,7 +151,70 @@
             </div>
         </div>
     </footer>
-
+    <button class="open-btn">View Irish Coffee</button>
+    <dialog class="dialog">
+        <div class="dialog-container">
+            <div class="dialog-img">
+                <img src="img/coffee-irish-coffee.png" alt="irish-coffee">
+            </div>
+            <div class="dialog-content">
+                <div class="dialog-header">
+                    <h3 class="dialog-title">Irish coffee</h3>
+                    <p class="dialog-subtitle">
+                        Fragrant black coffee with Jameson Irish whiskey and whipped milk
+                    </p>
+                </div>
+                <div class="dialog-section">
+                    <span class="dialog-section-title">Size</span>
+                    <div class="dialog-tabs-list">
+                        <button type="button" class="size-tab tab active">
+                            <span class="size-char active">S</span>
+                            <span class="size-num">200 ml</span>
+                        </button>
+                        <button type="button" class="size-tab">
+                            <span class="size-char">M</span>
+                            <span class="size-num">300 ml</span>
+                        </button>
+                        <button type="button" class="size-tab">
+                            <span class="size-char">L</span>
+                            <span class="size-num">400 ml</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="dialog-section">
+                    <span class="dialog-section-title">Additives</span>
+                    <div class="dialog-tabs-list">
+                        <button type="button" class="additive-tab">
+                            <span class="additive-num">1</span>
+                            <span class="additive-text">Sugar</span>
+                        </button>
+                        <button type="button" class="additive-tab">
+                            <span class="additive-num">2</span>
+                            <span class="additive-text">Cinnamon</span>
+                        </button>
+                        <button type="button" class="additive-tab">
+                            <span class="additive-num">3</span>
+                            <span class="additive-text">Syrup</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="dialog-total">
+                    <div class="dialog-total-title">Total:</div>
+                    <div class="dialog-price">$7.00</div>
+                </div>
+                <div class="dialog-info-block">
+                    <div class="dialog-logo">
+                        <p> i</p>
+                    </div>
+                    <p class="dialog-logo-text">
+                        The cost is not final. Download our mobile app to see the final price and place your order. Earn
+                        loyalty points and enjoy your favorite coffee with up to 20% discount.
+                    </p>
+                </div>
+                <button type="button" id="close-btn" class="close-btn">Close</button>
+            </div>
+        </div>
+    </dialog>
 </body>
 
 </html>
