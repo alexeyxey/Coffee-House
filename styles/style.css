@@ -52,8 +52,18 @@ body.dark-theme .dialog-logo p,
 body.dark-theme .close-btn {
     color: #E1D4C9;
 }
-body.dark-theme .dialog-logo p{
-    border-color:#E1D4C9;
+
+body.dark-theme .dialog-logo p {
+    border-color: #E1D4C9;
+}
+
+body.dark-theme .mobile-btn-content:hover {
+    background-color: #403F3D;
+}
+
+
+body.dark-theme .hero-btn-logo img {
+    content: url(../img/coffee-cup-light.svg);
 }
 
 
@@ -109,10 +119,18 @@ body.dark-theme .menu-item {
 
 
 body.dark-theme .footer-container,
-body.dark-theme .btn,
 body.dark-theme .dialog,
 body.dark-theme .size-char.active {
     background-color: #403F3D;
+}
+
+.btn:hover {
+    transition: all 0.3s ease 0s;
+}
+
+body.dark-theme .btn:hover {
+    background-color: #403F3D;
+    transition: all 0.3s ease 0s;
 }
 
 body.dark-theme .header-theme-switch {
@@ -328,9 +346,10 @@ body.dark-theme .switch-dark span {
 }
 
 .switch-dark span {
-
     background-image: url(../img/Moon.svg);
 }
+
+
 
 .active-theme {
     background-color: #B0907A;
@@ -426,6 +445,7 @@ body.dark-theme .switch-dark span {
     transform: translateY(5px);
     transition: 0.3s ease;
 }
+
 
 .favorite {
     padding: 100px 0 0 0;
@@ -1031,6 +1051,10 @@ body.dark-theme .switch-dark span {
     border-radius: 50%;
 }
 
+.switch-dark span:hover {
+    filter: invert(86%) sepia(11%) saturate(278%) hue-rotate(348deg) brightness(95%) contrast(91%);
+}
+
 .switch-dark:hover img {
     filter: invert(86%) sepia(11%) saturate(278%) hue-rotate(348deg) brightness(95%) contrast(91%);
 }
@@ -1561,6 +1585,13 @@ body.dark-theme .switch-dark span {
     width: 100%;
     margin: 34px 0 0 0;
     padding: 10px 0 10px 0;
+    transition: all 0.3s ease 0s;
+}
+
+.close-btn:hover {
+    transition: all 0.3s ease 0s;
+    background-color: #665F55;
+    color: #E1D4C9;
 }
 
 @media (max-width:768px) {
