@@ -1,5 +1,10 @@
+
+
 const darkTheme = document.querySelector(".switch-dark");
 const lightTheme = document.querySelector(".switch-light");
+const burger = document.querySelector('.header-menu-burger')
+const nav = document.querySelector('.header-list');
+
 
 darkTheme.addEventListener("click", () => {
     document.body.classList.add("dark-theme");
@@ -29,3 +34,10 @@ if (savedTheme === "light") {
     lightTheme.classList.add("active-theme");
     darkTheme.classList.remove("active-theme");
 }
+
+burger.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    burger.classList.toggle('active');
+    document.body.classList.toggle('active');
+})
+
