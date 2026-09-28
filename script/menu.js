@@ -25,9 +25,21 @@ function renderCards(data) {
         `}).join("")
     return cardsHTML;
 };
+
+
+
 let filterData;
 let first4;
 let isExpanded = false;;
+
+function updateCards() {
+    if (window.innerWidth > 1024) {
+        menuContainer.innerHTML = renderCards(filterData);
+    } else {
+        menuContainer.innerHTML = renderCards(
+            isExpanded ? filterData : filterData.slice(0, 4))
+    }
+}
 const categories = document.querySelectorAll('.offer-tab-container');
 categories[0].classList.add('active');
 categories.forEach(category => {
@@ -42,7 +54,7 @@ categories.forEach(category => {
         filterData = data.filter(item => item.category === currentData);
 
         isExpanded = false;
-        menuContainer.innerHTML = renderCards(filterData.slice(0, 4));
+        updateCards();
 
     })
 })
@@ -62,9 +74,10 @@ btnRefresh.addEventListener('click', () => {
     }
 })
 
+
 filterData = data.filter(item => item.category === 'coffee');
 
-menuContainer.innerHTML = renderCards(filterData.slice(0, 4))
+updateCards();
 
 const menuItems = document.querySelectorAll('.menu-items');
 const modal = document.querySelector(".dialog")
