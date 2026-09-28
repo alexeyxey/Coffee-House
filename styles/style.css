@@ -1088,6 +1088,20 @@ body.dark-theme .switch-dark span {
 
 @media (max-width:1024px) {
 
+    .btn-refresh {
+        width: 60px;
+        height: 60px;
+        border: 1px solid #665F58;
+        border-radius: 50%;
+        background: url("../img/refresh.svg") center / 24px no-repeat;
+        margin: 40px auto 0;
+        cursor: pointer;
+    }
+
+    .btn-refresh span {
+        display: block;
+    }
+
     .menu-items {
         justify-content: center;
     }
@@ -1215,23 +1229,6 @@ body.dark-theme .switch-dark span {
         height: 507px;
     }
 
-    .menu-item:nth-child(n + 5) {
-        display: none;
-    }
-
-    .btn-refresh {
-        width: 60px;
-        height: 60px;
-        border: 1px solid #665F58;
-        border-radius: 50%;
-        background: url("../img/refresh.svg") center / 24px no-repeat;
-        margin: 40px auto 0;
-        cursor: pointer;
-    }
-
-    .btn-refresh span {
-        display: block;
-    }
 
     .header-list {
         display: flex;

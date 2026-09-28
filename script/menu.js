@@ -1,5 +1,4 @@
 import data from './products.json' with { type: 'json' };
-console.log(data);
 
 const menuContainer = document.querySelector('.menu-items');
 
@@ -26,30 +25,54 @@ function renderCards(data) {
         `}).join("")
     return cardsHTML;
 };
-
+let filterData;
+let first4;
+let isExpanded = false;;
 const categories = document.querySelectorAll('.offer-tab-container');
 categories[0].classList.add('active');
 categories.forEach(category => {
     category.addEventListener('click', () => {
+
         categories.forEach(item => {
             item.classList.remove('active');
         })
         category.classList.add('active');
 
         const currentData = category.dataset.category;
-        const filterData = data.filter(item => item.category === currentData);
-        console.log(filterData)
-        console.log(currentData)
-        menuContainer.innerHTML = renderCards(filterData);
+        filterData = data.filter(item => item.category === currentData);
+
+        isExpanded = false;
+        menuContainer.innerHTML = renderCards(filterData.slice(0, 4));
+
     })
 })
 
-menuContainer.innerHTML = renderCards(data.filter(item => item.category === 'coffee'));
+const btnRefresh = document.querySelector('.btn-refresh');
 
+
+btnRefresh.addEventListener('click', () => {
+
+    if (isExpanded === false) {
+        menuContainer.innerHTML = renderCards(filterData);
+        isExpanded = true
+    }
+    else {
+        menuContainer.innerHTML = renderCards(filterData.slice(0, 4))
+        isExpanded = false
+    }
+})
+
+filterData = data.filter(item => item.category === 'coffee');
+
+menuContainer.innerHTML = renderCards(filterData.slice(0, 4))
 
 const menuItems = document.querySelectorAll('.menu-items');
 const modal = document.querySelector(".dialog")
 const closeBtn = document.querySelector(".close-btn")
+let additiveIndex = 0;
+let selectedAdditivePrice = 0;
+let selectedSizePrice = 0;
+
 
 menuItems.forEach(item => {
     item.addEventListener("click", (event) => {
@@ -68,25 +91,43 @@ menuItems.forEach(item => {
 
         const additiveTabs = modal.querySelectorAll(".additive-tab");
 
-        additiveTabs[0].classList.add('active');
+
         additiveTabs.forEach(tab => {
             tab.addEventListener('click', () => {
-                additiveTabs.forEach(tab => {
-                    tab.classList.remove('active');
-                })
-                tab.classList.add('active')
+
+                if (tab.classList.contains('active')) {
+                    tab.classList.remove('active')
+                    selectedAdditivePrice = 0;
+                }
+                else {
+                    additiveTabs.forEach(tab => {
+                        tab.classList.remove('active')
+                    })
+                    tab.classList.add('active');
+                    additiveIndex = +tab.querySelector('.additive-num').textContent - 1;
+                    selectedAdditivePrice = productData.additives[additiveIndex]["add-price"];
+                }
+
+                const dialogPrice = modal.querySelector('.dialog-price');
+                dialogPrice.textContent = `$${(+productData.price + +selectedSizePrice + +selectedAdditivePrice).toFixed(2)}`
             })
         })
-
 
         const sizeTabs = modal.querySelectorAll('.size-tab');
         sizeTabs[0].classList.add('active');
         sizeTabs.forEach(tab => {
 
+
             tab.addEventListener('click', () => {
                 sizeTabs.forEach(tab => {
                     tab.classList.remove('active')
                 })
+
+                selectedSizePrice = productData.sizes[tab.querySelector('.size-char').textContent.toLowerCase()]["add-price"];
+
+                const dialogPrice = modal.querySelector('.dialog-price');
+
+                dialogPrice.textContent = `$${(+productData.price + +selectedSizePrice + +selectedAdditivePrice).toFixed(2)}`
 
                 tab.classList.add('active')
             })
@@ -95,14 +136,15 @@ menuItems.forEach(item => {
     })
 })
 
-
-document.addEventListener('click', (e) => console.log('Клик по элементу:', e.target));
 modal.addEventListener('click', (event) => {
     if (event.target === modal || event.target.closest('#close-btn')) {
         document.body.classList.remove("active");
         modal.close();
     }
 })
+
+
+
 
 function renderModal(item) {
     return `
